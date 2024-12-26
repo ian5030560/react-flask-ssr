@@ -1,0 +1,6 @@
+{% extends 'layout.html' %}
+{% block context %}
+    {% for item in react_context %}
+        {{item|safe}}
+    {% endfor %}
+{% endblock %}

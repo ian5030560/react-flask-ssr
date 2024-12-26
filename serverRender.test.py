@@ -1,4 +1,6 @@
-from serverRender import serverRender
-
-for context in serverRender():
+from serverRender import serverStringRender, serverPipeRender
+    
+print(serverStringRender())
+print("------------------------------------------------")
+for context in serverPipeRender():
     print(context)

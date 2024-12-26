@@ -9,9 +9,7 @@
 
 <body>
     <div id="root">
-        {% for item in react_context %}
-        {{item|safe}}
-        {% endfor %}
+        {% block context %}{% endblock %}
     </div>
 </body>
 <script defer src="{{url_for('static', filename='client/bundle.js')}}"></script>

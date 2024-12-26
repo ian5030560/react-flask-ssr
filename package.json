@@ -6,7 +6,8 @@
     "build": "npm-run-all --parallel build:client build:server",
     "build:client": "webpack build --config webpack.client.js",
     "build:server": "webpack build --config webpack.server.js",
-    "ssr": "node static/server/bundle.js"
+    "ssr": "node static/server/bundle.js",
+    "ssr:pipe": "node static/server/bundle.js pipe"
   },
   "keywords": [],
   "author": "",

@@ -1,16 +1,18 @@
 import React from "react";
 import { renderToPipeableStream, renderToString } from "react-dom/server";
 import App from "./app";
-import { stderr, stdout } from "process";
+import { stdout } from "process";
 
-function serverRender() {
+const value = process.argv[2];
+
+if (value === "pipe") {
     const { pipe } = renderToPipeableStream(<App />, {
+        bootstrapScripts: [],
         onShellReady() {
             pipe(stdout);
         }
     });
-    // return renderToString(<App/>);
 }
-
-// console.log(serverRender());
-serverRender();
+else {
+    stdout.write(renderToString(<App />));
+}
