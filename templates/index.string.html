@@ -1,4 +1,15 @@
-{% extends 'layout.html' %}
-{% block context %}
-    {{react_context|safe}}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React hydration with Flask</title>
+</head>
+
+<body>
+    <div id="root">{{react_context|safe}}</div>
+</body>
+<script defer src="{{url_for('static', filename='client/bundle.js')}}"></script>
+
+</html>

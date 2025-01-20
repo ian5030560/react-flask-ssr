@@ -7,7 +7,7 @@ app.config.from_object("config")
 @app.route("/pipe")
 def pipe():
     context = serverPipeRender()
-    return Response(stream_template("index.pipe.html", react_context=context))
+    return Response(stream_template("index.pipe.html", react_context = context))
 
 @app.route("/")
 def index():

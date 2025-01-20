@@ -1,22 +1,24 @@
-import { lazy, Suspense, useMemo } from "react"
+import { useMemo, lazy, Suspense } from "react"
 import Counter from "./counter";
-const LazyCounter = lazy(() => import("./counter"));
+import { useSSR } from "./ssr";
 
-export default function App() {
+export default function App(props) {
+    const ssr = useSSR();
 
     const pathName = useMemo(() => {
-        if (typeof window !== 'undefined'){
-            const pathName = window.location.pathname;
-            return pathName;
+        let pathName;
+        if (!ssr){
+            pathName = "/";
         }
-    }, []);
+        else{
+            pathName = "/pipe";
+        }
+
+        return pathName;
+    }, [ssr]);
 
     return <>
         <h1>這是計時器</h1>
-        {
-            pathName === "/pipe" ? <Suspense fallback={<span>載入中</span>}>
-                <LazyCounter />
-            </Suspense> : <Counter />
-        }
+        <Counter/>
     </>
 }
